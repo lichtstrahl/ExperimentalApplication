@@ -3,4 +3,5 @@
     <dimen name="main_menu_padding">5dp</dimen>
     <dimen name="warning_alert_size">20dp</dimen>
     <dimen name="warning_alert_margin">10dp</dimen>
+    <dimen name="main_tab_height">48dp</dimen>
 </resources>

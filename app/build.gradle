@@ -26,6 +26,7 @@ android {
 ext {
     butterKnifeVersion = '10.0.0'
     androidXVersion = '1.0.2'
+    tabLayoutVersion = '1.6.1'
 }
 
 dependencies {
@@ -37,7 +38,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     // ButterKnife
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    // TabLayout
+    implementation "com.ogaclejapan.smarttablayout:library:$tabLayoutVersion"
 }
