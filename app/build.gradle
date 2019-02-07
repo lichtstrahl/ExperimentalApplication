@@ -45,4 +45,5 @@ dependencies {
 
     // TabLayout
     implementation "com.ogaclejapan.smarttablayout:library:$tabLayoutVersion"
+    implementation "com.ogaclejapan.smarttablayout:utils-v13:$tabLayoutVersion"
 }

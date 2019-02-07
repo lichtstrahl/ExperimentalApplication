@@ -1,8 +1,10 @@
 package root.iv.ui.fragment.util;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import android.app.Fragment;
+import android.app.FragmentManager;
+
+import androidx.legacy.app.FragmentPagerAdapter;
+
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
     public MainPagerAdapter(FragmentManager fm) {
