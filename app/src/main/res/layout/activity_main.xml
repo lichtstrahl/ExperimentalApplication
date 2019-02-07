@@ -14,6 +14,7 @@
         android:layout_height="@dimen/main_tab_size"
         app:stl_distributeEvenly="true"
         app:stl_indicatorColor="@color/colorPrimary"
+        android:background="@color/colorIndicator"
         app:stl_indicatorInterpolation="linear"
         app:stl_indicatorThickness="3dp"
         app:stl_underlineThickness="1dp"
