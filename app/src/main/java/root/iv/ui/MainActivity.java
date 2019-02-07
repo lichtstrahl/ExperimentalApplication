@@ -2,6 +2,7 @@ package root.iv.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import root.iv.R;
+import root.iv.ui.fragment.FragmentCanvas;
 import root.iv.ui.fragment.FragmentWarningAlert;
 
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.mainFrame, FragmentWarningAlert.getInstance())
+                .replace(R.id.mainFrame, FragmentCanvas.getInstance())
                 .commit();
     }
 
