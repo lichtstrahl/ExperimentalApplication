@@ -6,4 +6,5 @@
     <dimen name="main_tab_height">48dp</dimen>
     <dimen name="main_tab_size">48dp</dimen>
     <dimen name="navigation_head_height">85dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
 </resources>
