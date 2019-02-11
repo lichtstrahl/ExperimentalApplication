@@ -3,7 +3,6 @@ package root.iv.ui.activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -12,16 +11,16 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import root.iv.R;
 
 public class NavigationActivity extends AppCompatActivity {
-    @BindView(R.id.navigationView)
-    NavigationView navigationView;
+    @BindView(R.id.navigationViewRight)
+    NavigationView navigationViewRight;
+    @BindView(R.id.navigationViewLeft)
+    NavigationView navigationViewLeft;
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
     @BindView(R.id.bottomNavigation)
@@ -34,7 +33,8 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         ButterKnife.bind(this);
-        navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
+        navigationViewRight.setNavigationItemSelectedListener(this::onNavigationItemSelected);
+        navigationViewLeft.setNavigationItemSelectedListener(this::onNavigationItemSelected);
 
         bottomNavigation.setOnNavigationItemSelectedListener(this::bottomNavigationItemSelected);
 
@@ -77,7 +77,7 @@ public class NavigationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START, true);
+                drawerLayout.openDrawer(navigationViewRight, true);
                 return true;
             case R.id.menuNavigationCamera:
                 Toast.makeText(this, "Camera", Toast.LENGTH_LONG).show();
@@ -88,6 +88,17 @@ public class NavigationActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(navigationViewRight)) {
+            drawerLayout.closeDrawer(navigationViewRight, true);
+        } else if (drawerLayout.isDrawerVisible(navigationViewLeft)) {
+            drawerLayout.closeDrawer(navigationViewLeft, true);
+        } else {
+            super.onBackPressed();
         }
     }
 }
