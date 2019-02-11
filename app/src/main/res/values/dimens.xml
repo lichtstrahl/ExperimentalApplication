@@ -8,4 +8,7 @@
     <dimen name="navigation_head_height">85dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="bottom_navigation_height">52dp</dimen>
+    <dimen name="bottom_appbar_height">56dp</dimen>
+    <dimen name="fab_size">58dp</dimen>
+    <dimen name="bottom_height">70dp</dimen>
 </resources>

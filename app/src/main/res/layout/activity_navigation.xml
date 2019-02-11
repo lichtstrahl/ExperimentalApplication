@@ -35,6 +35,34 @@
             app:itemIconTint="@color/selectors"
             app:menu="@menu/bottom_navigation_menu"
             />
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_height"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/bottom_navigation_height">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="@dimen/fab_size"
+                android:layout_height="@dimen/fab_size"
+                app:layout_anchor="@id/bottomAppBar"
+                app:backgroundTint="@android:color/white"
+                android:src="@drawable/ic_camera"/>
+
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_appbar_height"
+                android:layout_gravity="bottom"
+                style="@style/Widget.MaterialComponents.BottomAppBar"
+                app:fabAlignmentMode="center"
+                app:title="title"
+                app:backgroundTint="@color/colorPrimary"
+                app:navigationIcon="@drawable/ic_search"
+                />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
