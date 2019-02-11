@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ public class NavigationActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.bottomNavigation)
+    BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class NavigationActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        bottomNavigation.setOnNavigationItemSelectedListener(this::bottomNavigationItemSelected);
     }
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -43,10 +47,21 @@ public class NavigationActivity extends AppCompatActivity {
                 Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
                 break;
         }
-
-        // Закрытие меню
-//        drawerLayout.closeDrawer(GravityCompat.START, true);
         return false;
+    }
+
+    public boolean bottomNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.bottomCamera:
+                Toast.makeText(this, "Camera", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.bottomSearch:
+                Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
+                break;
+        }
+
+        return true;
     }
 
     @Override

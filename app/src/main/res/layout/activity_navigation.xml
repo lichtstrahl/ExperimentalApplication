@@ -23,6 +23,18 @@
             android:background="@color/colorPrimary"
             android:elevation="5dp"
             />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_navigation_height"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/colorPrimary"
+            app:itemBackground="@color/colorPrimary"
+            app:itemTextColor="@color/selectors"
+            app:itemIconTint="@color/selectors"
+            app:menu="@menu/bottom_navigation_menu"
+            />
     </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
