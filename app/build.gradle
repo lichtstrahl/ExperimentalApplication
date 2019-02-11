@@ -46,4 +46,8 @@ dependencies {
     // TabLayout
     implementation "com.ogaclejapan.smarttablayout:library:$tabLayoutVersion"
     implementation "com.ogaclejapan.smarttablayout:utils-v13:$tabLayoutVersion"
+
+    // Design
+    implementation "com.google.android.material:material:1.1.0-alpha03"
+
 }
