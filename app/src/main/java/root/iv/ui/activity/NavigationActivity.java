@@ -1,9 +1,12 @@
 package root.iv.ui.activity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,21 +24,21 @@ public class NavigationActivity extends AppCompatActivity {
     NavigationView navigationView;
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.bottomNavigation)
     BottomNavigationView bottomNavigation;
+    @BindView(R.id.bottomAppBar)
+    BottomAppBar bottomAppBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+
         bottomNavigation.setOnNavigationItemSelectedListener(this::bottomNavigationItemSelected);
+
+        setSupportActionBar(bottomAppBar);
     }
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,11 +55,11 @@ public class NavigationActivity extends AppCompatActivity {
 
     public boolean bottomNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.bottomCamera:
+            case R.id.menuNavigationCamera:
                 Toast.makeText(this, "Camera", Toast.LENGTH_LONG).show();
                 break;
 
-            case R.id.bottomSearch:
+            case R.id.menuNavigationSearch:
                 Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
                 break;
         }
@@ -65,10 +68,23 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_navigation_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START, true);
+                return true;
+            case R.id.menuNavigationCamera:
+                Toast.makeText(this, "Camera", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.menuNavigationSearch:
+                Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

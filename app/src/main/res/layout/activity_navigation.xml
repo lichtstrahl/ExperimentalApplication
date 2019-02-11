@@ -12,17 +12,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/toolbar_height"
-            app:title="@string/app_name"
-            app:titleTextColor="@android:color/white"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
-            style="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse"
-            android:background="@color/colorPrimary"
-            android:elevation="5dp"
-            />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
@@ -59,7 +48,7 @@
                 app:fabAlignmentMode="center"
                 app:title="title"
                 app:backgroundTint="@color/colorPrimary"
-                app:navigationIcon="@drawable/ic_search"
+                app:navigationIcon="@drawable/ic_menu"
                 />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -71,7 +60,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_menu"
+        app:menu="@menu/bottom_navigation_menu"
         app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white"
         app:headerLayout="@layout/navigation_head"
