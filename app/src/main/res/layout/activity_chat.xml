@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.ChatActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutMSG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/buttonSend"
+        android:layout_margin="@dimen/stdMargin">
+        <EditText
+            android:id="@+id/inputMSG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Подсказка"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/stdMargin"
+        android:text="@string/send"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listMessageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/inputLayoutMSG">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>
