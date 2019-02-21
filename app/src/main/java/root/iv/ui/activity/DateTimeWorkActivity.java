@@ -1,5 +1,9 @@
 package root.iv.ui.activity;
 
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -8,19 +12,16 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.Operation;
-import androidx.work.WorkManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import root.iv.R;
 import root.iv.app.App;
-import root.iv.util.TreeWorker;
+import root.iv.util.receive.TreeReceiver;
+import root.iv.util.service.TreeService;
+import root.iv.util.work.TreeWorker;
 
 public class DateTimeWorkActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     private static final String TAG_DATE_DIALOG = "dialog:date";
@@ -28,6 +29,7 @@ public class DateTimeWorkActivity extends AppCompatActivity implements DatePicke
     private Calendar date;
     @BindView(R.id.viewResult)
     TextView viewResult;
+    private TreeReceiver receiver = null;
 
     @OnClick(R.id.buttonSelectDate)
     public void clickSelectDate() {
@@ -40,7 +42,6 @@ public class DateTimeWorkActivity extends AppCompatActivity implements DatePicke
         );
         dialog.show(getSupportFragmentManager(), TAG_DATE_DIALOG);
         dialog.setCancelable(false);
-
     }
 
     @Override
@@ -48,8 +49,15 @@ public class DateTimeWorkActivity extends AppCompatActivity implements DatePicke
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_time_work);
         ButterKnife.bind(this);
-    }
 
+        NotificationManager manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancel(TreeWorker.NOTIFICATION_ID);
+
+        Intent background = new Intent(getApplicationContext(), TreeService.class);
+        startService(background);
+
+        App.logI("Служба запушена");
+    }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {

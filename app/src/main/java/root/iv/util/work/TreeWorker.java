@@ -1,4 +1,4 @@
-package root.iv.util;
+package root.iv.util.work;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -22,6 +22,7 @@ import root.iv.ui.activity.DateTimeWorkActivity;
 
 public class TreeWorker extends Worker {
     private static final String INPUT_MSG = "input:msg";
+    public static final int NOTIFICATION_ID = 0;
     private static final String TAG = "tree-worker";
 
     public TreeWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -66,6 +67,6 @@ public class TreeWorker extends Worker {
         builder.setContentIntent(pendingIntent);
 
         NotificationManager manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
+        manager.notify(NOTIFICATION_ID, builder.build());
     }
 }
