@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.Operation;
 import androidx.work.WorkManager;
@@ -72,12 +73,6 @@ public class DateTimeWorkActivity extends AppCompatActivity implements DatePicke
         long timeNow = Calendar.getInstance().getTimeInMillis();
 
         viewResult.setText(date.getTime().toString());
-        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(TreeWorker.class)
-                .setInitialDelay(timeStart-timeNow, TimeUnit.MILLISECONDS)
-                .build();
-        WorkManager.getInstance().enqueue(request);
-        WorkManager.getInstance().getWorkInfoByIdLiveData(request.getId()).observe(this, state -> {
-            App.logI("Status: " + state.getState().toString());
-        });
+        TreeWorker.start(this, timeStart-timeNow, "Сообщение");
     }
 }
