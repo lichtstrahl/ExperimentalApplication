@@ -79,11 +79,15 @@ public class AnimationActivity extends AppCompatActivity {
 
         int width = point.x;
         SpringAnimation animation = new SpringAnimation(view, DynamicAnimation.TRANSLATION_X);
+        SpringAnimation rotateAnimation = new SpringAnimation(view, DynamicAnimation.ROTATION);
         if (viewIsAlignEnd(view, width)) {
             animation.animateToFinalPosition(0);
+            rotateAnimation.animateToFinalPosition(view.getRotation() + 90f);
+
         }
         if (viewIsAlignStart(view)){
             animation.animateToFinalPosition(width - view.getWidth());
+            rotateAnimation.animateToFinalPosition(view.getRotation() + 90f);
         }
 
 
