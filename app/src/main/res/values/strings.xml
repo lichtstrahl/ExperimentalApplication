@@ -3,4 +3,5 @@
     <string name="camera">Камера</string>
     <string name="search">Поиск</string>
     <string name="selectDate">Выбрать время</string>
+    <string name="play">play</string>
 </resources>

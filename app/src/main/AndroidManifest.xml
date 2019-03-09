@@ -10,14 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver
-            android:name=".util.receive.TreeReceiver"
-            android:enabled="true"
-            android:exported="true">
-
-        </receiver>
-
-        <activity android:name=".ui.activity.DateTimeWorkActivity">
+        <activity android:name=".ui.activity.AnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -25,12 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".util.receive.TreeReceiver"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <activity android:name=".ui.activity.DateTimeWorkActivity"/>
         <activity
             android:name=".ui.activity.NavigationActivity"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity android:name=".ui.activity.MainActivity" />
 
-        <service android:name=".util.service.TreeService" android:enabled="true" />
+        <service
+            android:name=".util.service.TreeService"
+            android:enabled="true" />
     </application>
 
 </manifest>
