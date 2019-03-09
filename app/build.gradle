@@ -61,4 +61,7 @@ dependencies {
 
     // Lottie Animation
     implementation "com.airbnb.android:lottie:2.8.0"
+
+    // Dynamic Animations
+    implementation "androidx.dynamicanimation:dynamicanimation:1.0.0"
 }
