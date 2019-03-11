@@ -1,10 +1,9 @@
 package root.iv.ui.activity;
 
 import android.animation.Animator;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -18,6 +17,7 @@ import butterknife.OnClick;
 import root.iv.R;
 
 public class AnimationActivity extends AppCompatActivity {
+    private Position position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class AnimationActivity extends AppCompatActivity {
         view.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-
             }
 
             @Override
@@ -42,12 +41,10 @@ public class AnimationActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationCancel(Animator animation) {
-
             }
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-
             }
         });
     }
@@ -59,58 +56,105 @@ public class AnimationActivity extends AppCompatActivity {
 
     @OnClick(R.id.buttonPlay)
     public void clickPlay(Button button) {
-        move(button);
+        int width = ((ViewGroup)button.getParent()).getWidth();
+        float translationX = button.getTranslationX();
+
+        moveOn(button, (Math.round(translationX) == 0) ? width-button.getWidth() : 0, 0);
+        rotate(button, 90.0f);
     }
 
-    @OnClick(R.id.buttonParam)
-    public void clickParam(Button button) {
-//        alpha(button);
-        scaleX(button);
-        scaleY(button);
+    @OnClick(R.id.buttonMove)
+    public void clickMove(Button button) {
+        float dx = button.getTranslationX();
+        float dy = button.getTranslationY();
+
+        if (Math.round(dx) == 0 && Math.round(dy) == 0) {
+            position = Position.CENTER;
+        }
+
+        changePosition(button);
     }
 
-    public void scaleX(View view) {
+    @OnClick(R.id.buttonScale)
+    public void clickScale(Button button) {
+        float scaleX = button.getScaleX();
+        float scaleY = button.getScaleY();
+
+        scaleX(button,  (Math.round(scaleX) == 1) ? 2 : 1);
+        scaleY(button,  (Math.round(scaleY) == 1) ? 2 : 1);
+
+        float translationY = button.getTranslationY();
+        moveOn(button, 0, (translationY == 0) ? 250 : 0);
+
+        float alpha = button.getAlpha();
+        alpha(button, (Math.round(alpha) == 1) ? 0.15f : 1);
+    }
+
+    private void changePosition(View view) {
+        RelativeLayout layout = (RelativeLayout) view.getParent();
+        int width = layout.getWidth();
+        int height = layout.getHeight();
+
+        switch (position) {
+            case PLACE_1:
+                position = Position.PLACE_2;
+                moveTo(view, width-view.getWidth(), 0);
+                break;
+            case PLACE_2:
+                position = Position.PLACE_3;
+                moveTo(view, width-view.getWidth(), height-view.getHeight());
+                break;
+            case PLACE_3:
+                position = Position.PLACE_4;
+                moveTo(view, 0, height-view.getHeight());
+                break;
+            default:
+                position = Position.PLACE_1;
+                moveTo(view, 0, 0);
+        }
+    }
+
+    private void moveTo(View view, float x0, float y0) {
+        SpringAnimation animX = new SpringAnimation(view, DynamicAnimation.X);
+        SpringAnimation animY = new SpringAnimation(view, DynamicAnimation.Y);
+
+        animX.animateToFinalPosition(x0);
+        animY.animateToFinalPosition(y0);
+    }
+
+    private void scaleX(View view, float scale) {
         SpringAnimation anim = new SpringAnimation(view, DynamicAnimation.SCALE_X);
-        float scale = view.getScaleX();
-        anim.animateToFinalPosition((Math.round(scale) == 2) ? 1 : 2);
+        anim.animateToFinalPosition(scale);
     }
 
-    public void scaleY(View view) {
+    private void scaleY(View view, float scale) {
         SpringAnimation anim = new SpringAnimation(view, DynamicAnimation.SCALE_Y);
-        float scale = view.getScaleY();
-        anim.animateToFinalPosition((Math.round(scale) == 2) ? 1 : 2);
+        anim.animateToFinalPosition(scale);
     }
 
-    public void alpha(View view) {
+    private void alpha(View view, float alpha) {
         SpringAnimation anim = new SpringAnimation(view, DynamicAnimation.ALPHA);
-        float alpha = view.getAlpha();
-        anim.animateToFinalPosition((Math.round(alpha) == 0) ? 1.0f : 0.0f);
+        anim.animateToFinalPosition(alpha);
     }
 
-    private void move(View view) {
-        Display display = getWindowManager().getDefaultDisplay();
-        Point point = new Point();
-        display.getSize(point);
+    private void moveOn(View view, int dx, int dy) {
+        SpringAnimation animX = new SpringAnimation(view, DynamicAnimation.TRANSLATION_X);
+        SpringAnimation animY = new SpringAnimation(view, DynamicAnimation.TRANSLATION_Y);
 
-        int width = point.x;
-        SpringAnimation animation = new SpringAnimation(view, DynamicAnimation.TRANSLATION_X);
+        animX.animateToFinalPosition(dx);
+        animY.animateToFinalPosition(dy);
+    }
+
+    private void rotate(View view, float alpha) {
         SpringAnimation rotateAnimation = new SpringAnimation(view, DynamicAnimation.ROTATION);
-        if (viewIsAlignEnd(view, width)) {
-            animation.animateToFinalPosition(0);
-            rotateAnimation.animateToFinalPosition(view.getRotation() + 90f);
-
-        }
-        if (viewIsAlignStart(view)){
-            animation.animateToFinalPosition(width - view.getWidth());
-            rotateAnimation.animateToFinalPosition(view.getRotation() + 90f);
-        }
+        rotateAnimation.animateToFinalPosition(view.getRotation() + alpha);
     }
+}
 
-    private boolean viewIsAlignEnd(View view, int width) {
-        return Math.round(view.getX() + view.getWidth()) == width;
-    }
-
-    private boolean viewIsAlignStart(View view) {
-        return Math.round(view.getX()) == 0;
-    }
+enum Position {
+    CENTER,
+    PLACE_1,
+    PLACE_2,
+    PLACE_3,
+    PLACE_4
 }

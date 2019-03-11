@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/Button</item>
     </style>
 
 
@@ -15,4 +16,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Button" parent="Base.Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/buttonBG</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
