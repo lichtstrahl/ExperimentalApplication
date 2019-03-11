@@ -1,28 +1,21 @@
 package root.iv.ui.activity;
 
 import android.animation.Animator;
-import android.content.res.Configuration;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-import java.util.Locale;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.dynamicanimation.animation.DynamicAnimation;
-import androidx.dynamicanimation.animation.FloatPropertyCompat;
 import androidx.dynamicanimation.animation.SpringAnimation;
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import root.iv.R;
-import root.iv.app.App;
 
 public class AnimationActivity extends AppCompatActivity {
 
@@ -31,8 +24,6 @@ public class AnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
         ButterKnife.bind(this);
-
-
     }
 
     @OnClick(R.id.animationLove)
@@ -68,11 +59,35 @@ public class AnimationActivity extends AppCompatActivity {
 
     @OnClick(R.id.buttonPlay)
     public void clickPlay(Button button) {
-        moveToRight(button);
-
+        move(button);
     }
 
-    private void moveToRight(View view) {
+    @OnClick(R.id.buttonParam)
+    public void clickParam(Button button) {
+//        alpha(button);
+        scaleX(button);
+        scaleY(button);
+    }
+
+    public void scaleX(View view) {
+        SpringAnimation anim = new SpringAnimation(view, DynamicAnimation.SCALE_X);
+        float scale = view.getScaleX();
+        anim.animateToFinalPosition((Math.round(scale) == 2) ? 1 : 2);
+    }
+
+    public void scaleY(View view) {
+        SpringAnimation anim = new SpringAnimation(view, DynamicAnimation.SCALE_Y);
+        float scale = view.getScaleY();
+        anim.animateToFinalPosition((Math.round(scale) == 2) ? 1 : 2);
+    }
+
+    public void alpha(View view) {
+        SpringAnimation anim = new SpringAnimation(view, DynamicAnimation.ALPHA);
+        float alpha = view.getAlpha();
+        anim.animateToFinalPosition((Math.round(alpha) == 0) ? 1.0f : 0.0f);
+    }
+
+    private void move(View view) {
         Display display = getWindowManager().getDefaultDisplay();
         Point point = new Point();
         display.getSize(point);
@@ -89,10 +104,6 @@ public class AnimationActivity extends AppCompatActivity {
             animation.animateToFinalPosition(width - view.getWidth());
             rotateAnimation.animateToFinalPosition(view.getRotation() + 90f);
         }
-
-
-
-
     }
 
     private boolean viewIsAlignEnd(View view, int width) {

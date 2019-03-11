@@ -4,4 +4,5 @@
     <string name="search">Поиск</string>
     <string name="selectDate">Выбрать время</string>
     <string name="play">play</string>
+    <string name="click_me">Нажми меня</string>
 </resources>
