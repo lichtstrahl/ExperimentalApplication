@@ -7,4 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.GUIActivity">
 
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="@dimen/previewSize"
+        android:layout_height="@dimen/previewSize"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/buttonLoad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/load"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/preview"/>
+
 </RelativeLayout>

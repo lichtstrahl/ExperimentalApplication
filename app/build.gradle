@@ -27,6 +27,7 @@ ext {
     butterKnifeVersion = '10.0.0'
     androidXVersion = '1.0.2'
     tabLayoutVersion = '1.6.1'
+    glideVersion = '4.9.0'
 }
 
 dependencies {
@@ -67,4 +68,8 @@ dependencies {
 
     // GUI Image
     implementation "jp.co.cyberagent.android:gpuimage:2.0.3"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 }
