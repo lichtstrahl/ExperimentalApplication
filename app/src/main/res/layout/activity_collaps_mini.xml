@@ -20,21 +20,22 @@
             android:background="@drawable/app_background"
             app:expandedTitleMarginEnd="@dimen/stdMargin"
             app:expandedTitleMarginStart="@dimen/stdMargin"
-            app:expandedTitleGravity="center_vertical"
+            app:expandedTitleGravity="center_horizontal|bottom"
             app:expandedTitleTextAppearance="@style/ToolBarExpanded"
             app:collapsedTitleTextAppearance="@style/ToolBarCollapsed"
             app:title="@string/app_name">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="parallax"
-                />
             <View
                 android:id="@+id/shadowView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_menu"
+                />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

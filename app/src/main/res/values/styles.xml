@@ -28,6 +28,6 @@
 
     <style name="ToolBarCollapsed" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:textStyle">italic</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 </resources>
