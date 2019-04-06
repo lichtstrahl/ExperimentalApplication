@@ -40,7 +40,7 @@ public class FragmentWarningAlert extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.main_menu_warning:
+            case R.id.menuWarning:
                 count = 0;
                 updateAlertWarnings();
                 return true;
@@ -51,16 +51,16 @@ public class FragmentWarningAlert extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.warning_menu, menu);
     }
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.main_menu_warning);
+        MenuItem item = menu.findItem(R.id.menuWarning);
         View view = item.getActionView();
 
-        viewCount = view.findViewById(R.id.viewCountWarnings);
-        backgroundViewAlerts = view.findViewById(R.id.backgroundViewAlerts);
+        viewCount = view.findViewById(R.id.viewAlertCount);
+        backgroundViewAlerts = view.findViewById(R.id.viewAlert);
         updateAlertWarnings();
 
         view.setOnClickListener(v -> onOptionsItemSelected(item));

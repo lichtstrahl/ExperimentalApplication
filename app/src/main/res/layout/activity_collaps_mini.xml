@@ -64,42 +64,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/stdMargin"
-                    android:layout_below="@id/view1"
                     android:textSize="80sp"
                     android:text="@string/load"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/stdMargin"
-                    android:layout_below="@id/view1"
                     android:textSize="80sp"
                     android:text="@string/load"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/stdMargin"
-                    android:layout_below="@id/view1"
                     android:textSize="80sp"
                     android:text="@string/load"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/stdMargin"
-                    android:layout_below="@id/view1"
                     android:textSize="80sp"
                     android:text="@string/load"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/stdMargin"
-                    android:layout_below="@id/view1"
                     android:textSize="80sp"
                     android:text="@string/load"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/stdMargin"
-                    android:layout_below="@id/view1"
                     android:textSize="80sp"
                     android:text="@string/load"/>
             </LinearLayout>
@@ -117,5 +111,6 @@
         app:itemIconTint="@android:color/white"
         app:headerLayout="@layout/navigation_head_background"
         android:layout_gravity="start"
+        tools:layout_width="0dp"
         />
 </androidx.drawerlayout.widget.DrawerLayout>

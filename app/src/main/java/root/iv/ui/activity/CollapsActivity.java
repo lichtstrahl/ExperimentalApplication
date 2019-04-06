@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -12,6 +14,7 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,14 +31,14 @@ public class CollapsActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     @BindView(R.id.navigationView)
     NavigationView navigationView;
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collaps_mini);
         ButterKnife.bind(this);
-//
-//
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         appBarLayout.addOnOffsetChangedListener((appBar, offset) -> {
@@ -52,8 +55,29 @@ public class CollapsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bottom_navigation_menu, menu);
+        getMenuInflater().inflate(R.menu.warning_menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem itemWarning = menu.findItem(R.id.menuWarning);
+        updateVisibleAlert(itemWarning);
+        itemWarning.getActionView().setOnClickListener(v -> {
+            Toast.makeText(this, "Warning", Toast.LENGTH_SHORT).show();
+            count++;
+            updateVisibleAlert(itemWarning);
+        });
+
+        return true;
+    }
+
+    private void updateVisibleAlert(MenuItem item) {
+        ImageView viewAlert = item.getActionView().findViewById(R.id.viewAlert);
+        TextView viewCount = item.getActionView().findViewById(R.id.viewAlertCount);
+        viewAlert.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
+        viewCount.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
+        viewCount.setText(String.valueOf(count));
     }
 
     @Override

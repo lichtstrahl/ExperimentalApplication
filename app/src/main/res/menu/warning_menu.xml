@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/main_menu_warning"
+        android:id="@+id/menuWarning"
         android:title="Warning"
         app:actionLayout="@layout/menu_item_warning"
         app:showAsAction="ifRoom" />
