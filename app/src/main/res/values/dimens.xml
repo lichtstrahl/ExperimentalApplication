@@ -16,4 +16,5 @@
     <dimen name="stdMargin">8dp</dimen>
     <dimen name="height_appbar">250dp</dimen>
     <dimen name="bigText">28sp</dimen>
+    <dimen name="height_toolbar">56dp</dimen>
 </resources>
