@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import root.iv.R;
@@ -21,6 +24,10 @@ public class CollapsActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     @BindView(R.id.shadowView)
     View shadowView;
+    @BindView(R.id.drawerLayout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.navigationView)
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,11 @@ public class CollapsActivity extends AppCompatActivity {
             int totalRange = appBar.getTotalScrollRange();
             float a = Math.abs(offset/(float)totalRange);
             shadowView.setAlpha(a*a*a*a);
+        });
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            onOptionsItemSelected(item);
+            return true;
         });
     }
 
@@ -56,7 +68,7 @@ public class CollapsActivity extends AppCompatActivity {
                 break;
 
             case android.R.id.home:
-                Toast.makeText(this, "Меню", Toast.LENGTH_SHORT).show();
+                drawerLayout.openDrawer(GravityCompat.START, true);
                 break;
         }
         return true;
