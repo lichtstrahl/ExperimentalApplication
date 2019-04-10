@@ -50,4 +50,18 @@ dependencies {
     // Design
     implementation "com.google.android.material:material:1.1.0-alpha03"
 
+    // Material DateTime Picker
+    implementation "com.wdullaer:materialdatetimepicker:4.1.2"
+
+    // WorkManager
+    implementation "android.arch.work:work-runtime:1.0.0-rc01"
+
+    // Awaitility
+    implementation "org.awaitility:awaitility:3.1.5"
+
+    // Lottie Animation
+    implementation "com.airbnb.android:lottie:2.8.0"
+
+    // Dynamic Animations
+    implementation "androidx.dynamicanimation:dynamicanimation:1.0.0"
 }
