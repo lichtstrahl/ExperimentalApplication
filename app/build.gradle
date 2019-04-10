@@ -27,13 +27,14 @@ ext {
     butterKnifeVersion = '10.0.0'
     androidXVersion = '1.0.2'
     tabLayoutVersion = '1.6.1'
+    glideVersion = '4.9.0'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidXVersion"
     // Test
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation "androidx.appcompat:appcompat:$androidXVersion"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -54,14 +55,21 @@ dependencies {
     implementation "com.wdullaer:materialdatetimepicker:4.1.2"
 
     // WorkManager
-    implementation "android.arch.work:work-runtime:1.0.0-rc01"
+    implementation "android.arch.work:work-runtime:1.0.0"
 
     // Awaitility
-    implementation "org.awaitility:awaitility:3.1.5"
+    implementation "org.awaitility:awaitility:3.1.6"
 
     // Lottie Animation
     implementation "com.airbnb.android:lottie:2.8.0"
 
     // Dynamic Animations
     implementation "androidx.dynamicanimation:dynamicanimation:1.0.0"
+
+    // GUI Image
+    implementation "jp.co.cyberagent.android:gpuimage:2.0.3"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 }
