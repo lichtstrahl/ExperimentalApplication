@@ -1,4 +1,4 @@
-package root.iv.ui;
+package root.iv.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int[] iconsID = new int[] {
             R.drawable.ic_canvas,
-            R.drawable.ic_warning
+            R.drawable.ic_warning,
+            R.drawable.ic_camera
     };
 
     @Override
