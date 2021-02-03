@@ -7,4 +7,5 @@
     <string name="click_me">Нажми меня</string>
     <string name="move">Передвижение</string>
     <string name="load">Loading</string>
+    <string name="message">Сообщение</string>
 </resources>

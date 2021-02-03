@@ -7,4 +7,5 @@
     <color name="colorPrimaryLight">#08CFBA</color>
 
     <color name="buttonBG">#FF1919</color>
+    <color name="colorShadow">#000</color>
 </resources>

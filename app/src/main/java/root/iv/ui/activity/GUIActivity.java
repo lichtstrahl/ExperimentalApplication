@@ -1,5 +1,15 @@
 package root.iv.ui.activity;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.opengl.GLSurfaceView;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.util.Locale;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSeekBar;
@@ -9,19 +19,6 @@ import butterknife.OnClick;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageBrightnessFilter;
 import root.iv.R;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.opengl.GLSurfaceView;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-
-import java.util.Locale;
 
 public class GUIActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 1;

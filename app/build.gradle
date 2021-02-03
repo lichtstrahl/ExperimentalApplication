@@ -36,40 +36,33 @@ dependencies {
     // Test
     implementation "androidx.appcompat:appcompat:$androidXVersion"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     // ButterKnife
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
-
     // TabLayout
     implementation "com.ogaclejapan.smarttablayout:library:$tabLayoutVersion"
     implementation "com.ogaclejapan.smarttablayout:utils-v13:$tabLayoutVersion"
-
     // Design
-    implementation "com.google.android.material:material:1.1.0-alpha03"
-
+    implementation 'com.google.android.material:material:1.1.0-alpha03'
     // Material DateTime Picker
-    implementation "com.wdullaer:materialdatetimepicker:4.1.2"
-
+    implementation 'com.wdullaer:materialdatetimepicker:4.1.2'
     // WorkManager
-    implementation "android.arch.work:work-runtime:1.0.0"
-
+    implementation 'android.arch.work:work-runtime:1.0.0'
     // Awaitility
-    implementation "org.awaitility:awaitility:3.1.6"
-
+    implementation 'org.awaitility:awaitility:3.1.6'
     // Lottie Animation
-    implementation "com.airbnb.android:lottie:2.8.0"
-
+    implementation 'com.airbnb.android:lottie:2.8.0'
     // Dynamic Animations
-    implementation "androidx.dynamicanimation:dynamicanimation:1.0.0"
-
+    implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     // GUI Image
-    implementation "jp.co.cyberagent.android:gpuimage:2.0.3"
-
+    implementation 'jp.co.cyberagent.android:gpuimage:2.0.3'
     // Glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    // CircleImageView
+    implementation "de.hdodenhof:circleimageview:3.0.0"
 }

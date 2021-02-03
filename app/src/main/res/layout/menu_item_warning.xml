@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:background="@color/colorPrimary"
-    android:layout_gravity="center">
+    android:orientation="vertical"
+    android:layout_width="?attr/actionBarSize"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_gravity="center"
+    tools:background="@color/colorPrimaryLight">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="9dp"
         android:src="@drawable/ic_warning"/>
 
-    <FrameLayout
-        android:id="@+id/backgroundViewAlerts"
-        android:layout_width="@dimen/warning_alert_size"
-        android:layout_height="@dimen/warning_alert_size"
-        android:layout_alignEnd="@id/imageView"
-        android:layout_margin="@dimen/warning_alert_margin"
-        android:background="@drawable/ic_warning_alert_18dp">
-        <TextView
-            android:id="@+id/viewCountWarnings"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            tools:text="2"/>
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/viewAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_warning_alert_18dp"
+        android:layout_margin="@dimen/stdMargin"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
 
-
-
+    <TextView
+        android:id="@+id/viewAlertCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:layout_alignStart="@id/viewAlert"
+        android:layout_alignEnd="@id/viewAlert"
+        android:layout_alignTop="@id/viewAlert"
+        android:layout_alignBottom="@id/viewAlert"
+        android:textAlignment="center"
+        tools:text="2"/>
 
 </RelativeLayout>

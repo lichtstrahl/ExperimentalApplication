@@ -14,4 +14,9 @@
     <dimen name="anim_size">128dp</dimen>
     <dimen name="previewSize">200dp</dimen>
     <dimen name="stdMargin">8dp</dimen>
+    <dimen name="height_appbar">250dp</dimen>
+    <dimen name="bigText">28sp</dimen>
+    <dimen name="height_toolbar">56dp</dimen>
+    <dimen name="width_navigation">100dp</dimen>
+    <dimen name="icon_size">56dp</dimen>
 </resources>
